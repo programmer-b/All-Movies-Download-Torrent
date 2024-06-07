@@ -1,0 +1,191 @@
+{
+  "project_info": {
+    "project_number": "658433163214",
+    "firebase_url": "https://all-movies-downloader-41346-default-rtdb.firebaseio.com",
+    "project_id": "all-movies-downloader-41346",
+    "storage_bucket": "all-movies-downloader-41346.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:658433163214:android:690d2aa9ffd1768682f59f",
+        "android_client_info": {
+          "package_name": "com.dantech.all_movies_downloader_new"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "658433163214-j50200pks5oad9mf8buqcndc1s5j4fiq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDH5xzMjm9HfLr_czMl5vck3AAaVMNiLqA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "658433163214-j50200pks5oad9mf8buqcndc1s5j4fiq.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "658433163214-luuppi272cn00v8qhdhh952j36691lpb.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.dantech.allmoviesdownloder"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:658433163214:android:c8f034b557d0062382f59f",
+        "android_client_info": {
+          "package_name": "com.dantech.all_movies_downloder"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "658433163214-j50200pks5oad9mf8buqcndc1s5j4fiq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDH5xzMjm9HfLr_czMl5vck3AAaVMNiLqA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "658433163214-j50200pks5oad9mf8buqcndc1s5j4fiq.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "658433163214-luuppi272cn00v8qhdhh952j36691lpb.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.dantech.allmoviesdownloder"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:658433163214:android:87bd4c50c71e74a982f59f",
+        "android_client_info": {
+          "package_name": "com.dantech.all_movies_downloder_premium"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "658433163214-j50200pks5oad9mf8buqcndc1s5j4fiq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDH5xzMjm9HfLr_czMl5vck3AAaVMNiLqA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "658433163214-j50200pks5oad9mf8buqcndc1s5j4fiq.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "658433163214-luuppi272cn00v8qhdhh952j36691lpb.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.dantech.allmoviesdownloder"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:658433163214:android:18b64a23acaa2e3482f59f",
+        "android_client_info": {
+          "package_name": "com.dantech.all_movies_downloder_premium.lucy_pro"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "658433163214-j50200pks5oad9mf8buqcndc1s5j4fiq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDH5xzMjm9HfLr_czMl5vck3AAaVMNiLqA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "658433163214-j50200pks5oad9mf8buqcndc1s5j4fiq.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "658433163214-luuppi272cn00v8qhdhh952j36691lpb.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.dantech.allmoviesdownloder"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:658433163214:android:6f33d83bf00ce82d82f59f",
+        "android_client_info": {
+          "package_name": "com.dantech.all_movies_downloder_premium.lucy_pro_pro_pro"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "658433163214-j50200pks5oad9mf8buqcndc1s5j4fiq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDH5xzMjm9HfLr_czMl5vck3AAaVMNiLqA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "658433163214-j50200pks5oad9mf8buqcndc1s5j4fiq.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "658433163214-luuppi272cn00v8qhdhh952j36691lpb.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.dantech.allmoviesdownloder"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,47 @@
+const base = 'http://192.168.0.20:3000';
+// const base = "https://all-movie-downloader-390117.uc.r.appspot.com";
+const v = '/v5';
+const api = '/api';
+const tBase = '$base$v$api';
+const moviesandtvsUrl = '$tBase/data/moviesandtvs';
+const baseExtraSmallImageUrl = 'https://image.tmdb.org/t/p/w92';
+const baseSmallImageUrl = 'https://image.tmdb.org/t/p/w154';
+const baseMediumImageUrl = 'https://image.tmdb.org/t/p/w185';
+const baseLargeImageUrl = 'https://image.tmdb.org/t/p/w342';
+const baseExtraLargeImageUrl = 'https://image.tmdb.org/t/p/w500';
+const baseOriginalImageUrl = 'https://image.tmdb.org/t/p/original';
+const browseUrl = '$tBase/data/browse';
+const searchUrl = '$tBase/data/search';
+const detailsUrl = '$tBase/data/details';
+
+const v1 = "/v1";
+const v1ApiRoute = "/api";
+const String apiBaseUrl = base + v1 + v1ApiRoute;
+String loginUrl = "$apiBaseUrl/auth/login?lang=en";
+String registerUrl = "$apiBaseUrl/auth/register?lang=en";
+String verifyUrl = "$apiBaseUrl/auth/verify?lang=en";
+String forgotPasswordUrl = "$apiBaseUrl/auth/forgot-password?lang=en";
+String setNewPasswordUrl = "$apiBaseUrl/auth/set-new-password?lang=en";
+String resetPasswordUrl = "$apiBaseUrl/auth/reset-password?lang=en";
+String resendOTPUrl = "$apiBaseUrl/auth/resend-otp?lang=en";
+String deleteUserUrl = "$apiBaseUrl/users/removeUser?lang=en";
+String getDataExistsUrl = "$apiBaseUrl/users/getDataExists?lang=en";
+String addDataUrl = "$apiBaseUrl/users/addData?lang=en";
+String removeUserDataUrl = "$apiBaseUrl/users/removeData?lang=en";
+String getDownloadListUrl = "$apiBaseUrl/users/getData?lang=en";
+String feedbackUrl = "$apiBaseUrl/users/feedback?lang=en";
+
+const v4 = "/v4";
+const v5 = "/v5";
+const v4Base = '$base$v4$api';
+const v5Base = '$base$v5$api';
+const v4MoviesandtvsUrl = '$v4Base/data/moviesandtvs';
+const v5MoviesandtvsUrl = '$v5Base/data/moviesandtvs';
+const submitReportUrl = '$v4Base/data/report';
+
+const talks = '$v4Base/forums/talks';
+const talk = '$v4Base/forums/talk';
+const reply = '$v4Base/forums/reply';
+const like = '$v4Base/forums/like';
+const dislike = '$v4Base/forums/dislike';
+const deleteTalk = '$v4Base/forums/deleteTalk';
