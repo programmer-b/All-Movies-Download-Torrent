@@ -14,31 +14,36 @@ class TorrentReceiver extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final args =
-    ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
+        ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
     return _TorrentScreen(
-        torrents: args["torrents"],
-        type: args["type"],
-        yts: args["yts"],
-        title: args["title"]);
+      torrents: args["torrents"],
+      type: args["type"],
+      yts: args["yts"],
+      title: args["title"],
+      // ytsId: args["id"],
+    );
   }
 }
 
 class _TorrentScreen extends StatelessWidget {
   const _TorrentScreen(
       {required this.torrents,
-        required this.type,
-        this.yts,
-        required this.title});
+      required this.type,
+      this.yts,
+      required this.title,
+      // required this.ytsId
+      });
 
   final dynamic torrents;
   final String type;
   final dynamic yts;
   final String title;
+  // final int ytsId;
 
   @override
   Widget build(BuildContext context) {
-    dev.log("torrents ====\n\n" + torrents.toString());
-    dev.log("torrents is empty or null ====\n\n" + torrents.isEmpty.toString());
+    // dev.log("torrents ====\n\n" + torrents.toString());
+    // dev.log("torrents is empty or null ====\n\n" + torrents.isEmpty.toString());
     if (type == "movie") {
       return _MovieTorrents(
         torrents: torrents,
@@ -115,9 +120,9 @@ class _ShowTorrents extends StatefulWidget {
 class _ShowTorrentsState extends State<_ShowTorrents> {
   @override
   Widget build(BuildContext context) {
-    dev.log("yts ====\n\n" + widget.yts.toString());
+    // dev.log("yts ====\n\n" + widget.yts.toString());
 
-    final data = widget.yts["data"];
+    final data = widget.yts["data"] ?? widget.yts["details"]["data"];
     return Scaffold(
       appBar: AppBar(
         title: const Text("Torrents"),
@@ -130,9 +135,9 @@ class _ShowTorrentsState extends State<_ShowTorrents> {
                 final episodes = data[i]['episodes'];
                 int compareEpisodes(dynamic a, dynamic b) {
                   int episodeNumberA =
-                  int.parse(a["title"].replaceAll(RegExp(r'[^0-9]'), ''));
+                      int.parse(a["title"].replaceAll(RegExp(r'[^0-9]'), ''));
                   int episodeNumberB =
-                  int.parse(b["title"].replaceAll(RegExp(r'[^0-9]'), ''));
+                      int.parse(b["title"].replaceAll(RegExp(r'[^0-9]'), ''));
 
                   return episodeNumberA - episodeNumberB;
                 }
@@ -145,27 +150,27 @@ class _ShowTorrentsState extends State<_ShowTorrents> {
                       for (var j = 0; j < data[i]['episodes'].length; j++)
                         ExpansionTile(
                             title: Text(data[i]['episodes'][j]['details']
-                            ['info']['title']),
+                                ['info']['title']),
                             children: [
                               for (var k = 0;
-                              k <
-                                  data[i]['episodes'][j]['details']
-                                  ['torrents']
-                                      .length;
-                              k++)
+                                  k <
+                                      data[i]['episodes'][j]['details']
+                                              ['torrents']
+                                          .length;
+                                  k++)
                                 Builder(builder: (context) {
                                   final link = data[i]['episodes'][j]['details']
-                                  ['torrents'][k]['link'];
+                                      ['torrents'][k]['link'];
                                   final titleFromLink = link
                                       .split('/')
                                       .last
                                       .replaceAll(RegExp('.torrent'), '');
                                   return ListTile(
                                     title: Text(data[i]['episodes'][j]
-                                    ['details']['torrents'][k]
-                                    ['serveTitle']),
+                                            ['details']['torrents'][k]
+                                        ['serveTitle']),
                                     subtitle: Text(data[i]['episodes'][j]
-                                    ['details']['torrents'][k]['quality']),
+                                        ['details']['torrents'][k]['quality']),
                                     trailing: ElevatedButton(
                                       onPressed: () {
                                         if (adsLow) {

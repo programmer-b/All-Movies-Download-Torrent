@@ -5,6 +5,10 @@ import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 class AdHelper {
   static String get appOpenAdUnitId => 'ca-app-pub-5988017258715205/1799461274';
+
+  static String get nativeAdvancedAdUnitId =>
+      'ca-app-pub-5988017258715205/7878989749';
+
   // static String get appOpenAdUnitId => '';
   static String get bannerAdUnitId {
     if (Platform.isAndroid) {
@@ -65,13 +69,13 @@ void showInterstitialAd() {
   if (interstitialAd != null) {
     interstitialAd!.fullScreenContentCallback =
         FullScreenContentCallback(onAdDismissedFullScreenContent: (ad) {
-          ad.dispose();
-          createInterstitialAd();
-        }, onAdFailedToShowFullScreenContent: (ad, error) {
-          log('$error');
-          ad.dispose();
-          createInterstitialAd();
-        });
+      ad.dispose();
+      createInterstitialAd();
+    }, onAdFailedToShowFullScreenContent: (ad, error) {
+      log('$error');
+      ad.dispose();
+      createInterstitialAd();
+    });
     interstitialAd!.show();
     interstitialAd = null;
   }

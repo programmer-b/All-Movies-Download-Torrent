@@ -14,6 +14,7 @@ import '../../../state/home_state.dart';
 import '../../../utils/ads_manager.dart';
 import '../../../utils/urls.dart';
 import '../../details/details_screen.dart';
+import '../widgets/home_data_build.dart';
 
 class BrowseReceiver extends StatefulWidget {
   const BrowseReceiver({super.key});
@@ -179,56 +180,64 @@ class _BrowseDisplayFragmentState extends State<_BrowseDisplayFragment> {
                 var releaseDate = provider.data[index]['releaseDate'] ?? '';
                 var genres = provider.data[index]['genres'] ?? '';
                 var id = provider.data[index]['id'];
+                final reader = context.read<HomeState>();
                 return Padding(
                   padding: const EdgeInsets.symmetric(
                     vertical: 1,
                   ),
-                  child: Card(
-                    child: ListTile(
-                        isThreeLine: true,
-                        onTap: () {
-                          if (adsHigh) {
-                            showInterstitialAd();
-                          }
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => DetailsScreen(
-                                  accessId: id,
-                                ),
-                              ));
-                        },
-                        leading: Container(
-                          height: 50,
-                          width: 50 * 2 / 3,
-                          decoration: BoxDecoration(
-                            color: Colors.grey,
-                            borderRadius: BorderRadius.circular(5),
-                            image: watcher.baseSmallImageUrl == ""
-                                ? null
-                                : DecorationImage(
-                                    colorFilter:
-                                        watcher.hideImagesForEmulators &&
-                                                !isRealDevice
-                                            ? ColorFilter.mode(
-                                                Colors.grey.withOpacity(0.9),
-                                                BlendMode.srcOver)
-                                            : null,
-                                    fit: BoxFit.cover,
-                                    image: CachedNetworkImageProvider(
-                                      poster ??
-                                          "https://via.placeholder.com/150",
-                                    )),
-                          ),
-                        ),
-                        title: Text(title),
-                        subtitle: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(releaseDate),
-                            Text(genres),
-                          ],
-                        )),
+                  child: Column(
+                    children: [
+                      Card(
+                        child: ListTile(
+                            isThreeLine: true,
+                            onTap: () {
+                              if (adsHigh) {
+                                showInterstitialAd();
+                              }
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => DetailsScreen(
+                                      accessId: id,
+                                    ),
+                                  ));
+                            },
+                            leading: Container(
+                              height: 50,
+                              width: 50 * 2 / 3,
+                              decoration: BoxDecoration(
+                                color: Colors.grey,
+                                borderRadius: BorderRadius.circular(5),
+                                image: watcher.baseSmallImageUrl == ""
+                                    ? null
+                                    : DecorationImage(
+                                        colorFilter:
+                                            watcher.hideImagesForEmulators &&
+                                                    !isRealDevice
+                                                ? ColorFilter.mode(
+                                                    Colors.grey.withOpacity(0.9),
+                                                    BlendMode.srcOver)
+                                                : null,
+                                        fit: BoxFit.cover,
+                                        image: CachedNetworkImageProvider(
+                                          poster ??
+                                              "https://via.placeholder.com/150",
+                                        )),
+                              ),
+                            ),
+                            title: Text(title),
+                            subtitle: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(releaseDate),
+                                Text(genres),
+                              ],
+                            )),
+                      ),
+                      if (shouldShowAd(index)  &&
+                          adsHigh && reader.showNativeAds) // Added condition to avoid showing ad at the start
+                        NativeAdWidget(),
+                    ],
                   ),
                 );
               }),

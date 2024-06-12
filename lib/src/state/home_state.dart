@@ -18,7 +18,7 @@ class HomeState extends ChangeNotifier {
   }
 
   Future<void> fetchData() async {
-    var data = utils.getJSONAsync('data', defaultValue: {});
+    var data = utils.getJSONAsync('data');
     if (data.isNotEmpty) {
       _data = data;
       notifyListeners();
@@ -104,6 +104,10 @@ class HomeState extends ChangeNotifier {
 
   String get waploaded_download_link_base => _waploaded_download_link_base;
 
+  bool _showNativeAds = false;
+
+  bool get showNativeAds => _showNativeAds;
+
   void setUpdateUrl(String value) {
     dev.log("Update URL: $value");
     _updateUrl = value;
@@ -167,6 +171,12 @@ class HomeState extends ChangeNotifier {
   void setIncludeWaploaded(bool value) {
     dev.log("Include Waploaded: $value");
     _include_waploaded = value;
+    notifyListeners();
+  }
+
+  void setShowNativeAds(bool value) {
+    dev.log("Show Native Ads: $value");
+    _showNativeAds = value;
     notifyListeners();
   }
 
@@ -278,6 +288,7 @@ class HomeState extends ChangeNotifier {
         "hibo_master": setHiboMaster,
         "include_waploaded": (value) => setIncludeWaploaded(value == "true"),
         "waploaded_download_link_base": setWaploadedDownloadLinkBase,
+        "showNativeAdsIn": (value) => setShowNativeAds(value == "true"),
       };
 
       configs.forEach((key, valueSetter) {
@@ -290,11 +301,10 @@ class HomeState extends ChangeNotifier {
         setReady(true);
         _firebaseDataIn = event;
       });
-
-      fetchData();
     } catch (e) {
       dev.log(e.toString());
     }
+    fetchData();
   }
 }
 

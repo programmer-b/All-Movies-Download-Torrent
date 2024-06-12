@@ -7,7 +7,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
-import 'package:lucy/src/presentation/details/download_file.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:open_file/open_file.dart';
 import 'package:path_provider/path_provider.dart';
@@ -18,6 +17,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../../main.dart';
 import '../../state/home_state.dart';
 import '../../utils/ads_manager.dart';
+import 'download_file.dart';
 
 class ToDownloadScreen extends StatefulWidget {
   const ToDownloadScreen(
@@ -67,8 +67,10 @@ class _ToDownloadScreenState extends State<ToDownloadScreen> {
         builder: (context) => _downloadingComponent(context: context));
     Dio dio = Dio();
     try {
-      var dir = await getExternalStorageDirectory();
-      var filePath = "${dir?.path}/myFile.torrent";
+      var dir = await getApplicationCacheDirectory();
+      var filePath = "${dir.path}/${
+          //unix time stamp
+          DateTime.now().millisecondsSinceEpoch}.torrent";
       dev.log('File path: $filePath');
 
       // Delete the file if it exists
@@ -204,7 +206,6 @@ class _ToDownloadScreenState extends State<ToDownloadScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     createBannerAd();
   }
@@ -212,7 +213,6 @@ class _ToDownloadScreenState extends State<ToDownloadScreen> {
   //
   // @override
   // void dispose() {
-  //   // TODO: implement dispose
   //   super.dispose();
   //   bannerAd?.dispose();
   // }
@@ -275,6 +275,7 @@ class _ToDownloadScreenState extends State<ToDownloadScreen> {
                           )
                         : widget.isTorrent
                             ? _downloadAndOpenTorrent(context: context)
+                            // ? _downloadAndOpenADMInternal()
                             : _launchDownloadManager(),
                     leading: const Icon(Icons.file_download_outlined),
                   ),
@@ -383,20 +384,20 @@ class _ToDownloadScreenState extends State<ToDownloadScreen> {
                 // ),
                 if (!widget.isTorrent)
                   if (!(!isRealDevice && watcher.hideContentForEmulators))
-                  const SizedBox(
-                    height: 8,
-                  ),
+                    const SizedBox(
+                      height: 8,
+                    ),
                 if (!widget.isTorrent)
                   if (!(!isRealDevice && watcher.hideContentForEmulators))
-                  Card(
-                    child: ListTile(
-                      onTap: () async => await Share.share(masterUrl),
-                      leading: const Icon(Icons.share),
-                      title: const Text(
-                        "Share Link",
+                    Card(
+                      child: ListTile(
+                        onTap: () async => await Share.share(masterUrl),
+                        leading: const Icon(Icons.share),
+                        title: const Text(
+                          "Share Link",
+                        ),
                       ),
                     ),
-                  ),
                 const SizedBox(
                   height: 16,
                 ),

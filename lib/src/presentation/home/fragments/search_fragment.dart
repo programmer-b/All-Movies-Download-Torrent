@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:lucy/src/presentation/home/widgets/home_data_build.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../main.dart';
@@ -129,63 +130,69 @@ class _SearchFragmentState extends State<SearchFragment> {
                   padding: const EdgeInsets.symmetric(
                     vertical: 1,
                   ),
-                  child: Card(
-                    child: ListTile(
-                      isThreeLine: true,
-                      onTap: () {
-                        if (adsVeryHigh) {
-                          showInterstitialAd();
-                        }
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => DetailsScreen(
-                              id: id,
-                            ),
-                          ));
-                      },
-                      leading: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          const SizedBox(height: 4),
-                          Container(
-                            height: 50,
-                            width: 50 * 2 / 3,
-                            decoration: BoxDecoration(
-                              color: Colors.grey,
-                              border: Border.all(
-                                color: Colors.grey.shade800,
-                                width: 1,
-                              ),
-                              borderRadius: BorderRadius.circular(8),
-                              image: watcher.baseSmallImageUrl == ""
-                                  ? null
-                                  : watcher.hideImagesForEmulators &&
-                                          !isRealDevice
+                  child: Column(
+                    children: [
+                      Card(
+                        child: ListTile(
+                          isThreeLine: true,
+                          onTap: () {
+                            if (adsVeryHigh) {
+                              showInterstitialAd();
+                            }
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => DetailsScreen(
+                                    id: id,
+                                  ),
+                                ));
+                          },
+                          leading: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              const SizedBox(height: 4),
+                              Container(
+                                height: 50,
+                                width: 50 * 2 / 3,
+                                decoration: BoxDecoration(
+                                  color: Colors.grey,
+                                  border: Border.all(
+                                    color: Colors.grey.shade800,
+                                    width: 1,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8),
+                                  image: watcher.baseSmallImageUrl == ""
                                       ? null
-                                      : DecorationImage(
-                                          fit: BoxFit.cover,
-                                          image: CachedNetworkImageProvider(
-                                              posterHere),
-                                        ),
-                            ),
+                                      : watcher.hideImagesForEmulators &&
+                                              !isRealDevice
+                                          ? null
+                                          : DecorationImage(
+                                              fit: BoxFit.cover,
+                                              image: CachedNetworkImageProvider(
+                                                  posterHere),
+                                            ),
+                                ),
+                              ),
+                            ],
                           ),
-                        ],
-                      ),
-                      title: Text(title),
-                      subtitle: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          releaseDate == null
-                              ? Text(type, style: const TextStyle(fontSize: 12))
-                              : Text('$type | $releaseDate',
-                                  style: const TextStyle(fontSize: 12)),
-                          Text(
-                            genresHere ?? '',
+                          title: Text(title),
+                          subtitle: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              releaseDate == null
+                                  ? Text(type,
+                                      style: const TextStyle(fontSize: 12))
+                                  : Text('$type | $releaseDate',
+                                      style: const TextStyle(fontSize: 12)),
+                              Text(
+                                genresHere ?? '',
+                              ),
+                            ],
                           ),
-                        ],
+                        ),
                       ),
-                    ),
+                      if (shouldShowAd(index) && adsHigh && watcher.showNativeAds) NativeAdWidget()
+                    ],
                   ),
                 );
               },
