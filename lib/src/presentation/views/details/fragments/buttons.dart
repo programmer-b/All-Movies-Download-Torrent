@@ -1,3 +1,5 @@
+import 'dart:developer' as developer;
+
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:provider/provider.dart';
@@ -74,6 +76,8 @@ class _ButtonsState extends State<Buttons> {
 
                   if (!mounted) return;
                   if (isSpecial) {
+                    developer.log('Download link: $downloadLink');
+                    developer.log('Special download link: $specialDownloadLink');
                     AbDownload(
                       url: specialDownloadLink,
                       title: widget.details['title_long'] ?? '',

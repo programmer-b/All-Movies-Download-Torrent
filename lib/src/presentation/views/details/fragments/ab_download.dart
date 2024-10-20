@@ -56,15 +56,14 @@ class _AbDownloadState extends State<AbDownload> {
                   useShouldInterceptFetchRequest: true),
               onWebViewCreated: (controller) => webViewController = controller,
               onLoadResource: (controller, resource) {
-                // debugPrint('======= onLoadResource: ${resource.url}');
-                // var url = resource.url;
-                // if ('$url'.contains('kissorgrab.com')) {
-                //   debugPrint('======= Download URL load resource: $url');
-                // }
+                developer.log('======= onLoadResource: ${resource.url}');
+
                 controller.evaluateJavascript(source: '''
       document.getElementById("downloadButton").click();
     ''');
               },
+              onLoadStart: (controller, url) =>
+                  developer.log('======= Download URL load start: $url'),
               onLoadStop: (controller, url) {
                 controller.evaluateJavascript(source: '''
             document.getElementById("downloadButton").click();
@@ -78,7 +77,8 @@ class _AbDownloadState extends State<AbDownload> {
                 // if (kDebugMode) {
                 //   print("===========    shouldOverrideUrlLoading ${navigationAction.request.url}");
                 // }
-                // developer.log('======= shouldOverrideUrlLoading: ${navigationAction.request.url}');
+                developer.log(
+                    '======= shouldOverrideUrlLoading: ${navigationAction.request.url}');
                 var url = navigationAction.request.url;
                 if ('$url'.contains('kissorgrab.com') ||
                     '$url'.contains('meetdownload.com')) {
@@ -123,6 +123,7 @@ class _AbDownloadState extends State<AbDownload> {
                 // if (kDebugMode) {
                 //   print("progress: $progress");
                 // }
+                developer.log('======= Download URL progress: $progress');
                 var url = controller.getUrl();
                 if ('$url'.contains('kissorgrab.com')) {
                   debugPrint('======= Download URL on progress: $url');
@@ -132,6 +133,8 @@ class _AbDownloadState extends State<AbDownload> {
                 // if (kDebugMode) {
                 //   print("ajax: ${ajax.url}");
                 // }
+                developer
+                    .log('======= Download URL ajax ready state: ${ajax.url}');
                 var url = ajax.url;
                 if ('$url'.contains('kissorgrab.com')) {
                   debugPrint('======= Download URL ajax ready state: $url');
